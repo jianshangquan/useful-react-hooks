@@ -5,6 +5,7 @@ module.exports.useInView = require('./hook/useInView');
 module.exports.useMounted = require('./hook/useMounted');
 module.exports.useOnFocus = require('./hook/useOnFocus');
 module.exports.useResize = require('./hook/useResize');
+module.exports.useExtendedState = require('./hook/useExtendedState');
 
 
 
@@ -17,3 +18,6 @@ const { DefaultScreenBreakPoints, MediaQueryView, useMediaQuery } = require('./h
 module.exports.DefaultScreenBreakPoints = DefaultScreenBreakPoints;
 module.exports.MediaQueryView = MediaQueryView;
 module.exports.useMediaQuery = useMediaQuery;
+
+
+
