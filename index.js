@@ -14,9 +14,8 @@ module.exports.useFetchState = useFetchState;
 module.exports.FetchState = FetchState;
 
 
-const { DefaultScreenBreakPoints, MediaQueryView, useMediaQuery } = require('./hook/useMediaQuery');
+const { DefaultScreenBreakPoints, useMediaQuery } = require('./hook/useMediaQuery');
 module.exports.DefaultScreenBreakPoints = DefaultScreenBreakPoints;
-module.exports.MediaQueryView = MediaQueryView;
 module.exports.useMediaQuery = useMediaQuery;
 
 

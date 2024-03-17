@@ -58,19 +58,6 @@ function useMediaQuery(ob = {sm, md, lg, xl, xl2}){
 
 
 
-function MediaQueryView({children, threadhold}){
-    const query = useMediaQuery();
-
-    return (
-        <div></div>
-    )
-}
-
-
-
-
-
 
 module.exports.useMediaQuery = useMediaQuery;
 module.exports.DefaultScreenBreakPoints = DefaultScreenBreakPoints;
-module.exports.MediaQueryView = MediaQueryView;
