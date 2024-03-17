@@ -1,12 +1,12 @@
 const { useState } = require('react');
 
-module.exports.FetchState = Object.freeze({
+const FetchState = Object.freeze({
     LOADING: 'loading',
     COMPLETED: 'completed',
     ERROR: 'error',
     NOT_INITIALIZE: 'not-initialized'
 })
-
+module.exports.FetchState =  FetchState;
 
 module.exports.useFetchState = function useFetchState(){
     const [state, setState] = useState({

@@ -4,7 +4,7 @@
     "react-dom": "^18.2.0"
   },
   "name": "useful-react-boilerplate-hooks",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
