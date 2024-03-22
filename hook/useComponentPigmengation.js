@@ -13,7 +13,7 @@ module.exports = function useComponentPigmengation(ref, onPigment, { threshold =
         onPigment && onPigment();
         if(onPigment){
             const hasData = await onPigment();
-            if(!hasData && autoPauseTriggerWhenNoData) setPause(true); 
+            if(hasData == false && autoPauseTriggerWhenNoData) setPause(true); 
         }
         setTriggered(true);
     }
