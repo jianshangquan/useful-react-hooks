@@ -12,6 +12,7 @@ module.exports = function useComponentPigmengation(ref, onPigment, { threshold =
     useEffect(() => {
         if(!attatch) return;
         const compoment = ref.current;
+        if(compoment == null) return;
         const onScroll = (event) => {
             if(pause) return;
             
@@ -35,7 +36,7 @@ module.exports = function useComponentPigmengation(ref, onPigment, { threshold =
         return () => {
             compoment.removeEventListener('scroll', onScroll);
         }
-    }, [ triggered, attatch, ...dependicies]);
+    }, [ triggered, attatch, ref.current, ...dependicies]);
 
 
     return {
