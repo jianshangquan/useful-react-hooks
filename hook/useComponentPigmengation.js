@@ -10,7 +10,6 @@ module.exports = function useComponentPigmengation(ref, onPigment, { threshold =
 
     const trigger = async () => {
         if(!mounted) return;
-        onPigment && onPigment();
         if(onPigment){
             const hasData = await onPigment();
             if(hasData == false && autoPauseTriggerWhenNoData) setPause(true); 
