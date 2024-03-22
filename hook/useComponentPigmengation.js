@@ -1,11 +1,15 @@
 const { useEffect, useState } = require('react');
 
-module.exports = function useComponentPigmengation(ref, onPigment, { threshold = 0.99, attatch = true, triggerOnce = true, dependicies = [] }) {
+module.exports = function useComponentPigmengation(ref, onPigment, { threshold = 0.99, attatch = true, triggerOnce = true, dependicies = [], autoPauseTriggerWhenNoData = true }) {
     const [pause, setPause] = useState(false);
     const [triggered, setTriggered] = useState(false);
 
-    const trigger = () => {
+    const trigger = async () => {
         onPigment && onPigment();
+        if(onPigment){
+            const hasData = await onPigment();
+            if(!hasData && autoPauseTriggerWhenNoData) setPause(true); 
+        }
         setTriggered(true);
     }
 
