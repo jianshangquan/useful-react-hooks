@@ -1,4 +1,4 @@
-const { useEffect, useState } = require('react');
+const { useEffect, useState, useRef } = require('react');
 const useMounted = require('./useMounted');
 
 module.exports = function useComponentPigmengation(ref, onPigment, { threshold = 0.99, attatch = true, triggerOnce = true, dependicies = [], autoPauseTriggerWhenNoData = true }) {
