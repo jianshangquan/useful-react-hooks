@@ -1,18 +1,25 @@
 const { useEffect, useState } = require('react');
 const useMounted = require('./useMounted');
 
-module.exports = function useComponentPigmengation(ref, onPigment, { threshold = 0.99, attatch = true, triggerOnce = true, dependicies = [], autoPauseTriggerWhenNoData = true }) {
+module.exports = 
+
+function useComponentPigmengation(ref, onPigment, { threshold = 0.99, attatch = true, triggerOnce = true, dependicies = [], autoPauseTriggerWhenNoData = true }) {
 
     const mounted = useMounted();
-    const [pause, setPause] = useState(false);
+    // const [pause, setPause] = useState(false);
+    const pause = useRef();
     const [triggered, setTriggered] = useState(false);
     
 
     const trigger = async () => {
         if(!mounted) return;
+        if(pause.current) return;
         if(onPigment){
+            pause.current = true;
             const hasData = await onPigment();
-            if(hasData == false && autoPauseTriggerWhenNoData) setPause(true); 
+            if(hasData == false && autoPauseTriggerWhenNoData) {
+                pause.current = true;
+            }
         }
         setTriggered(true);
     }
@@ -21,21 +28,22 @@ module.exports = function useComponentPigmengation(ref, onPigment, { threshold =
         if(!attatch) return;
         const compoment = ref.current;
         if(compoment == null) return;
-        const onScroll = (event) => {
-            if(pause) return;
+        const onScroll = async (event) => {
+            if(pause.current) return;
             
+
             const scroll = compoment.scrollTop + compoment.offsetHeight;
             const scrollHeight = compoment.scrollHeight;
             if (scroll / scrollHeight >= threshold) {
                 if (triggerOnce) {
                     if(!triggered){
-                        trigger();
+                        await trigger();
                         return;
                     }
                     return;
                 }
 
-                trigger();
+                await trigger();
             }else{
                 setTriggered(false);
             }
@@ -48,8 +56,8 @@ module.exports = function useComponentPigmengation(ref, onPigment, { threshold =
 
 
     return {
-        pause: () => setPause(true),
-        start: () => setPause(false)
+        pause: () => pause.current = true,
+        start: () => pause.current = false
     }
     
 }
