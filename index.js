@@ -19,10 +19,3 @@ module.exports.DefaultScreenBreakPoints = DefaultScreenBreakPoints;
 module.exports.useMediaQuery = useMediaQuery;
 
 
-
-
-const ThemeProvider = require('./hook/useDetectTheme');
-const { Themes, useDetectTheme } = require('./hook/useDetectTheme');
-module.exports.ThemeProvider = ThemeProvider;
-module.exports.Themes = Themes;
-module.exports.useDetectTheme = useDetectTheme;
